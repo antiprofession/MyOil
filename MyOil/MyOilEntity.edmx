@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OilModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="OilModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="OilModel.Store.__MigrationHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GasolineStations" EntityType="OilModel.Store.GasolineStations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GasolineTypes" EntityType="OilModel.Store.GasolineTypes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OilConsumeInfoes" EntityType="OilModel.Store.OilConsumeInfoes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SideMenus" EntityType="OilModel.Store.SideMenus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubMenus" EntityType="OilModel.Store.SubMenus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="user" EntityType="OilModel.Store.user" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="user_enc" EntityType="OilModel.Store.user_enc" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_dbo_OilConsumeInfoes_dbo_GasolineStations_gs_id" Association="OilModel.Store.FK_dbo_OilConsumeInfoes_dbo_GasolineStations_gs_id">
+            <End Role="GasolineStations" EntitySet="GasolineStations" />
+            <End Role="OilConsumeInfoes" EntitySet="OilConsumeInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OilConsumeInfoes_dbo_GasolineTypes_gt_id" Association="OilModel.Store.FK_dbo_OilConsumeInfoes_dbo_GasolineTypes_gt_id">
+            <End Role="GasolineTypes" EntitySet="GasolineTypes" />
+            <End Role="OilConsumeInfoes" EntitySet="OilConsumeInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_subMenus_dbo_SideMenus_menu_ID" Association="OilModel.Store.FK_dbo_subMenus_dbo_SideMenus_menu_ID">
+            <End Role="SideMenus" EntitySet="SideMenus" />
+            <End Role="SubMenus" EntitySet="SubMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OilConsumeInfoes_OilConsumeInfoes" Association="OilModel.Store.FK_OilConsumeInfoes_OilConsumeInfoes">
+            <End Role="user" EntitySet="user" />
+            <End Role="OilConsumeInfoes" EntitySet="OilConsumeInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="GasolineStations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="lge" Type="real" Nullable="false" />
+          <Property Name="lae" Type="real" Nullable="false" />
+          <Property Name="place" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="GasolineTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OilConsumeInfoes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="totalCost" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Oilprice" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="oilQuantity" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="refuelTime" Type="nvarchar(max)" />
+          <Property Name="user_UserId" Type="int" />
+          <Property Name="gs_id" Type="int" />
+          <Property Name="gt_id" Type="int" />
+        </EntityType>
+        <EntityType Name="SideMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SubMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="menu_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="PWD" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nchar" MaxLength="10" />
+          <Property Name="Note" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="user_enc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="PWD" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nchar" MaxLength="10" />
+          <Property Name="Note" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_dbo_OilConsumeInfoes_dbo_GasolineStations_gs_id">
+          <End Role="GasolineStations" Type="OilModel.Store.GasolineStations" Multiplicity="0..1" />
+          <End Role="OilConsumeInfoes" Type="OilModel.Store.OilConsumeInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GasolineStations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OilConsumeInfoes">
+              <PropertyRef Name="gs_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OilConsumeInfoes_dbo_GasolineTypes_gt_id">
+          <End Role="GasolineTypes" Type="OilModel.Store.GasolineTypes" Multiplicity="0..1" />
+          <End Role="OilConsumeInfoes" Type="OilModel.Store.OilConsumeInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GasolineTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OilConsumeInfoes">
+              <PropertyRef Name="gt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_subMenus_dbo_SideMenus_menu_ID">
+          <End Role="SideMenus" Type="OilModel.Store.SideMenus" Multiplicity="0..1" />
+          <End Role="SubMenus" Type="OilModel.Store.SubMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SideMenus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubMenus">
+              <PropertyRef Name="menu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OilConsumeInfoes_OilConsumeInfoes">
+          <End Role="user" Type="OilModel.Store.user" Multiplicity="0..1" />
+          <End Role="OilConsumeInfoes" Type="OilModel.Store.OilConsumeInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OilConsumeInfoes">
+              <PropertyRef Name="user_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OilModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="OilEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="OilModel.C__MigrationHistory" />
+          <EntitySet Name="GasolineStations" EntityType="OilModel.GasolineStation" />
+          <EntitySet Name="GasolineTypes" EntityType="OilModel.GasolineType" />
+          <EntitySet Name="OilConsumeInfoes" EntityType="OilModel.OilConsumeInfo" />
+          <EntitySet Name="SideMenus" EntityType="OilModel.SideMenu" />
+          <EntitySet Name="SubMenus" EntityType="OilModel.SubMenu" />
+          <EntitySet Name="users" EntityType="OilModel.user" />
+          <EntitySet Name="user_enc" EntityType="OilModel.user_enc" />
+          <AssociationSet Name="FK_dbo_OilConsumeInfoes_dbo_GasolineStations_gs_id" Association="OilModel.FK_dbo_OilConsumeInfoes_dbo_GasolineStations_gs_id">
+            <End Role="GasolineStations" EntitySet="GasolineStations" />
+            <End Role="OilConsumeInfoes" EntitySet="OilConsumeInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OilConsumeInfoes_dbo_GasolineTypes_gt_id" Association="OilModel.FK_dbo_OilConsumeInfoes_dbo_GasolineTypes_gt_id">
+            <End Role="GasolineTypes" EntitySet="GasolineTypes" />
+            <End Role="OilConsumeInfoes" EntitySet="OilConsumeInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OilConsumeInfoes_OilConsumeInfoes" Association="OilModel.FK_OilConsumeInfoes_OilConsumeInfoes">
+            <End Role="user" EntitySet="users" />
+            <End Role="OilConsumeInfoes" EntitySet="OilConsumeInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_subMenus_dbo_SideMenus_menu_ID" Association="OilModel.FK_dbo_subMenus_dbo_SideMenus_menu_ID">
+            <End Role="SideMenus" EntitySet="SideMenus" />
+            <End Role="SubMenus" EntitySet="SubMenus" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GasolineStation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lge" Type="Single" Nullable="false" />
+          <Property Name="lae" Type="Single" Nullable="false" />
+          <Property Name="place" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="OilConsumeInfoes" Relationship="OilModel.FK_dbo_OilConsumeInfoes_dbo_GasolineStations_gs_id" FromRole="GasolineStations" ToRole="OilConsumeInfoes" />
+        </EntityType>
+        <EntityType Name="GasolineType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="OilConsumeInfoes" Relationship="OilModel.FK_dbo_OilConsumeInfoes_dbo_GasolineTypes_gt_id" FromRole="GasolineTypes" ToRole="OilConsumeInfoes" />
+        </EntityType>
+        <EntityType Name="OilConsumeInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="totalCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Oilprice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="oilQuantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="refuelTime" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="user_UserId" Type="Int32" />
+          <Property Name="gs_id" Type="Int32" />
+          <Property Name="gt_id" Type="Int32" />
+          <NavigationProperty Name="GasolineStation" Relationship="OilModel.FK_dbo_OilConsumeInfoes_dbo_GasolineStations_gs_id" FromRole="OilConsumeInfoes" ToRole="GasolineStations" />
+          <NavigationProperty Name="GasolineType" Relationship="OilModel.FK_dbo_OilConsumeInfoes_dbo_GasolineTypes_gt_id" FromRole="OilConsumeInfoes" ToRole="GasolineTypes" />
+          <NavigationProperty Name="user" Relationship="OilModel.FK_OilConsumeInfoes_OilConsumeInfoes" FromRole="OilConsumeInfoes" ToRole="user" />
+        </EntityType>
+        <EntityType Name="SideMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="SubMenus" Relationship="OilModel.FK_dbo_subMenus_dbo_SideMenus_menu_ID" FromRole="SideMenus" ToRole="SubMenus" />
+        </EntityType>
+        <EntityType Name="SubMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="menu_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PWD" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Role" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Note" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="OilConsumeInfoes" Relationship="OilModel.FK_OilConsumeInfoes_OilConsumeInfoes" FromRole="user" ToRole="OilConsumeInfoes" />
+        </EntityType>
+        <EntityType Name="user_enc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PWD" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Role" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Note" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <Association Name="FK_dbo_OilConsumeInfoes_dbo_GasolineStations_gs_id">
+          <End Role="GasolineStations" Type="OilModel.GasolineStation" Multiplicity="0..1" />
+          <End Role="OilConsumeInfoes" Type="OilModel.OilConsumeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GasolineStations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OilConsumeInfoes">
+              <PropertyRef Name="gs_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OilConsumeInfoes_dbo_GasolineTypes_gt_id">
+          <End Role="GasolineTypes" Type="OilModel.GasolineType" Multiplicity="0..1" />
+          <End Role="OilConsumeInfoes" Type="OilModel.OilConsumeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GasolineTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OilConsumeInfoes">
+              <PropertyRef Name="gt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OilConsumeInfoes_OilConsumeInfoes">
+          <End Role="user" Type="OilModel.user" Multiplicity="0..1" />
+          <End Role="OilConsumeInfoes" Type="OilModel.OilConsumeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OilConsumeInfoes">
+              <PropertyRef Name="user_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_subMenus_dbo_SideMenus_menu_ID">
+          <End Role="SideMenus" Type="OilModel.SideMenu" Multiplicity="0..1" />
+          <End Role="SubMenus" Type="OilModel.SubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SideMenus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubMenus">
+              <PropertyRef Name="menu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OilModelStoreContainer" CdmEntityContainer="OilEntities">
+          <EntitySetMapping Name="C__MigrationHistory"><EntityTypeMapping TypeName="OilModel.C__MigrationHistory"><MappingFragment StoreEntitySet="__MigrationHistory">
+            <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+            <ScalarProperty Name="Model" ColumnName="Model" />
+            <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GasolineStations"><EntityTypeMapping TypeName="OilModel.GasolineStation"><MappingFragment StoreEntitySet="GasolineStations">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="lge" ColumnName="lge" />
+            <ScalarProperty Name="lae" ColumnName="lae" />
+            <ScalarProperty Name="place" ColumnName="place" />
+            <ScalarProperty Name="description" ColumnName="description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GasolineTypes"><EntityTypeMapping TypeName="OilModel.GasolineType"><MappingFragment StoreEntitySet="GasolineTypes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="type" ColumnName="type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OilConsumeInfoes"><EntityTypeMapping TypeName="OilModel.OilConsumeInfo"><MappingFragment StoreEntitySet="OilConsumeInfoes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="totalCost" ColumnName="totalCost" />
+            <ScalarProperty Name="Oilprice" ColumnName="Oilprice" />
+            <ScalarProperty Name="oilQuantity" ColumnName="oilQuantity" />
+            <ScalarProperty Name="refuelTime" ColumnName="refuelTime" />
+            <ScalarProperty Name="user_UserId" ColumnName="user_UserId" />
+            <ScalarProperty Name="gs_id" ColumnName="gs_id" />
+            <ScalarProperty Name="gt_id" ColumnName="gt_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SideMenus"><EntityTypeMapping TypeName="OilModel.SideMenu"><MappingFragment StoreEntitySet="SideMenus">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SubMenus"><EntityTypeMapping TypeName="OilModel.SubMenu"><MappingFragment StoreEntitySet="SubMenus">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="menu_ID" ColumnName="menu_ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="users"><EntityTypeMapping TypeName="OilModel.user"><MappingFragment StoreEntitySet="user">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PWD" ColumnName="PWD" />
+            <ScalarProperty Name="Role" ColumnName="Role" />
+            <ScalarProperty Name="Note" ColumnName="Note" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="user_enc"><EntityTypeMapping TypeName="OilModel.user_enc"><MappingFragment StoreEntitySet="user_enc">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PWD" ColumnName="PWD" />
+            <ScalarProperty Name="Role" ColumnName="Role" />
+            <ScalarProperty Name="Note" ColumnName="Note" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MyOilEntity">
+        <EntityTypeShape EntityType="OilModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="5.75" Height="1.5879931640624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilModel.GasolineStation" Width="1.5" PointX="0.75" PointY="1.5" Height="2.1610522460937496" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilModel.GasolineType" Width="1.5" PointX="0.75" PointY="4.875" Height="1.5879931640624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilModel.OilConsumeInfo" Width="1.5" PointX="3" PointY="1" Height="3.1161507161458339" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilModel.SideMenu" Width="1.5" PointX="5.75" PointY="0.875" Height="1.7790128580729174" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilModel.SubMenu" Width="1.5" PointX="8" PointY="0.875" Height="1.5879931640625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilModel.user" Width="1.5" PointX="5" PointY="6.75" Height="2.1610522460937496" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilModel.user_enc" Width="1.5" PointX="5.75" PointY="3.75" Height="1.9700325520833317" IsExpanded="true" />
+        <AssociationConnector Association="OilModel.FK_dbo_OilConsumeInfoes_dbo_GasolineStations_gs_id" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.5805261230468748" />
+          <ConnectorPoint PointX="3" PointY="2.5805261230468748" />
+        </AssociationConnector>
+        <AssociationConnector Association="OilModel.FK_dbo_OilConsumeInfoes_dbo_GasolineTypes_gt_id" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.28125" />
+          <ConnectorPoint PointX="4.40625" PointY="5.28125" />
+          <ConnectorPoint PointX="4.40625" PointY="4.1161507161458335" />
+        </AssociationConnector>
+        <AssociationConnector Association="OilModel.FK_OilConsumeInfoes_OilConsumeInfoes" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.34375" PointY="6.75" />
+          <ConnectorPoint PointX="5.34375" PointY="3.2020064290364587" />
+          <ConnectorPoint PointX="4.5" PointY="3.2020064290364587" />
+        </AssociationConnector>
+        <AssociationConnector Association="OilModel.FK_dbo_subMenus_dbo_SideMenus_menu_ID" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="1.66899658203125" />
+          <ConnectorPoint PointX="8" PointY="1.66899658203125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

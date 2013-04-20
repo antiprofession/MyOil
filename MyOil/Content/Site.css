@@ -1,0 +1,180 @@
+﻿html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+    width:990px;    
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:0;
+    margin-bottom:0;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+#header
+{
+    width:990px;
+    margin:0,auto;
+}
+
+#logindisplay
+{
+    float:right;
+}
+
+#background
+{
+    margin:0,auto;
+    background-image:url("../Content/image/header.png");
+    min-height:210px;
+}
+
+#background h1
+{
+    text-align:center;
+    color:#fff;
+    font-size:2.8em;
+}
+
+
+
+/*---------menu-----------------------------*/
+#side_nav
+{
+    width:150px;
+    border-bottom-width:thin;
+    border-bottom-style:solid;
+    float:left;
+    display:inline;
+}
+
+#side_nav .sidemenu
+{
+    height:40px;
+    line-height:40px;
+    border-bottom-color:#e6e6e6;
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    cursor:pointer;
+}
+
+#side_nav span
+{
+    font-size:14px;
+}
+
+#img_detail,#img_price,#img_station,#img_system
+{
+    height:25px;
+    width:25px;
+    line-height:25px;
+    margin:7px 14px 7px 14px;
+    float:left;    
+    display:inline;
+    background-image:url(image/funclegends.gif);
+}
+
+#img_detail
+{
+    background-position:-92px -12px;
+}
+
+#img_price
+{
+    background-position:-132px -12px;
+}
+
+#img_station
+{
+    background-position: -212px -12px;
+}
+
+#img_system
+{
+    background-position: -252px -12px;
+}
+    
+.hidden_menu
+{
+    text-indent:30px;
+    font-size:13px;
+    background-color:rgb(240, 242, 245);
+}
+
+.hidden
+{
+    display:none;
+}
+
+.shown
+{
+    display:block;
+}
+    
+#main
+{
+    margin-left:150px;
+}
+#main #chart_month
+{
+    margin-left:45px;
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+}
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}

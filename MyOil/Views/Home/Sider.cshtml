@@ -1,0 +1,13 @@
+﻿@model IEnumerable<MyOil.SideMenu>
+
+
+<div id="sider" style="float:left">
+@foreach (var item in Model) {
+    <ul id="sidemenu">@item.Title
+    @foreach (var subitem in item.SubMenus)
+    {
+            <li>@Html.ActionLink(subitem.Title,subitem.Title)</li>
+    }
+    </ul>
+}
+</div>
