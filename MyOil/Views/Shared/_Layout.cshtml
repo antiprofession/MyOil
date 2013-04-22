@@ -26,9 +26,11 @@
 </head>
 <body>
 <div id="header">
-    <div id="logo"></div>
-    <div id="logindisplay">
-         @Html.Partial("_LogOnPartial")
+    <div>
+        <div id="logo"><img alt="" src="" /></div>
+        <div id="logindisplay">
+             @Html.Partial("_LogOnPartial")
+        </div>
     </div>
     <div id="background">
         <h1>Welcome to your Gasoline Management!</h1>      
@@ -38,10 +40,10 @@
 <div id="side_nav">
     <div id="nav_detail" class="sidemenu">
         <div id="img_detail"></div>
-        <span>统计详情</span>
+        <a href="/home/index">统计详情</a>
     </div>
     <div id="detail_sub" class="hidden">
-    <div id="hidden_1" class="sidemenu hidden_menu">按时间统计</div>
+    <div id="hidden_1" class="sidemenu hidden_menu"><a href="/home/index">按时间统计</a></div>
     <div id="hidden_2" class="sidemenu hidden_menu">按地点统计</div>
     </div>
     <div id="nav_price" class="sidemenu">
@@ -57,11 +59,7 @@
         <span>系统管理</span>
     </div>   
 </div>
-<!--
-<div id="siderm">
-    @{Html.RenderAction("Sider", "Home");}
-</div>
--->
+
 <div id="main">
     @RenderBody()
 </div>

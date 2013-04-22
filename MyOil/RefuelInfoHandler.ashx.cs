@@ -15,7 +15,7 @@ namespace MyOil
 
         public void ProcessRequest(HttpContext context)
         {
-            OilConsumeInfo oci = new OilConsumeInfo();
+            OilConsumeInfoes oci = new OilConsumeInfoes();
             oci.user_UserId = int.Parse(context.Request["ID"]);
             oci.Oilprice = Decimal.Parse(context.Request["price"]);
             oci.oilQuantity = Decimal.Parse(context.Request["quantity"]);
@@ -26,7 +26,7 @@ namespace MyOil
             
             context.Response.ContentType = "text/plain";
             try{
-                db.OilConsumeInfoes.AddObject(oci);
+                db.OilConsumeInfoes.Add(oci);
                 db.SaveChanges();
                 context.Response.Write("OK");
             }

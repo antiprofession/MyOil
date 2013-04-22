@@ -17,7 +17,7 @@ namespace MyOil.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return PartialView();
         }
 
         public ActionResult Sider()

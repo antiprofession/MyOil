@@ -66,8 +66,8 @@ namespace MyOil.Controllers
                 if (model.Password == model.ConfirmPassword && 0 == db.user_enc.Where(c => c.Name == model.UserName).Count())
                 {
                     user user = new user { ID = 0, Name = model.UserName, PWD = model.Password, Role = "1" };
-                    user.ID = db.users.Max(c => c.ID) + 1;
-                    db.users.AddObject(user);
+                    user.ID = db.user.Max(c => c.ID) + 1;
+                    db.user.Add(user);
 
                     /* 用触发器实现
                     user_enc user_en = new user_enc { ID = user.ID, Name = model.UserName, PWD = model.Password, Role = "1" };
