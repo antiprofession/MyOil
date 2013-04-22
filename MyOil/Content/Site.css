@@ -9,10 +9,10 @@ body {
     color: #232323;
     background-color: #fff;
     width:990px;    
+    margin-bottom:0;
+    margin-top:0;
     margin-left:auto;
     margin-right:auto;
-    margin-top:0;
-    margin-bottom:0;
 }
 
 header, footer, nav, section {
@@ -121,11 +121,11 @@ header, footer, nav, section {
     
 #main
 {
-    margin-left:150px;
+    margin-left:195px;
 }
 #main #chart_month
 {
-    margin-left:45px;
+
     border-bottom-style:solid;
     border-bottom-width:1px;
 }
