@@ -71,6 +71,15 @@ header, footer, nav, section {
     font-size:14px;
 }
 
+#nav_detail
+{
+    line-height:40px;
+    background-image:url(image/menu_close.png);
+    background-repeat:no-repeat;
+    background-position-x:125px;
+    background-position-y:20px;
+}
+
 #img_detail,#img_price,#img_station,#img_system
 {
     height:25px;

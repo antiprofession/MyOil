@@ -14,10 +14,13 @@
                     $("#detail_sub").slideToggle(150);
                     $("#detail_sub").removeClass("hidden");
                     $("#detail_sub").addClass("shown");
+                    $('#nav_detail').css("background", "url(../Content/image/menu_open.png) no-repeat 125px 20px");
                 } else {
                     $("#detail_sub").removeClass("shown");
                     $("#detail_sub").addClass("hidden");
                     $("#detail_sub").slideUp(150);
+                    $('#nav_detail').css("background", "url(../Content/image/menu_close.png) no-repeat 125px 20px");
+
                 }
             })
         })
