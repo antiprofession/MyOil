@@ -17,7 +17,7 @@ namespace MyOil.Controllers
 
         public ActionResult Index()
         {
-            return PartialView();
+            return View();
         }
 
         public ActionResult Sider()
@@ -29,6 +29,11 @@ namespace MyOil.Controllers
         public ActionResult GetChartOfMonth()
         {
             db.OilConsumeInfoes.GroupBy(c =>  c.refuelTime.Substring(0,7) );
+            return PartialView();
+        }
+
+        public ActionResult GetTimeChart()
+        {
             return PartialView();
         }
 
